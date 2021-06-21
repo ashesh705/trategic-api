@@ -3,7 +3,7 @@ name: Format
 on: [push, pull_request]
 
 jobs:
-    Lint:
+    Format:
         runs-on: ubuntu-latest
         defaults:
             run:
@@ -24,6 +24,6 @@ jobs:
             - name: Install
               run: |
                   poetry install
-            - name: Check Lint
+            - name: Check Format
               run: |
                   poetry run task format-check
