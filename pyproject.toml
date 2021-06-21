@@ -7,9 +7,10 @@ authors = ["Ashesh Anand <62696185+ashesh705@users.noreply.github.com>"]
 [tool.poetry.dependencies]
 python = "^3.9"
 fastapi = "^0.65.2"
-uvicorn = "^0.14.0"
 pydantic = {extras = ["dotenv"], version = "^1.8.2"}
 PyYAML = "^5.4.1"
+uvicorn = {extras = ["standard"], version = "^0.14.0"}
+arq = "^0.20"
 
 [tool.poetry.dev-dependencies]
 ipython = "^7.24.1"
@@ -68,6 +69,7 @@ format-check = { cmd = "isort . -c && black --check .", help = "Check code for f
 lint-check = {cmd = "flake8 && mypy .", help = "Check code for any lint issues"}
 test = { cmd = "python -m pytest --cov", help = "Run all unit tests and produce coverage reports" }
 serve = { cmd = "uvicorn src.api:create_api --factory --reload --reload-dir src/ --log-config=logging.yaml", help = "Run a dev server hosting the application" }
+worker = { cmd = "arq src.tasks.WorkerSettings --watch src/", help = "Run an Arq worker to process background tasks" }
 
 [tool.mypy]
 ignore_missing_imports = true
