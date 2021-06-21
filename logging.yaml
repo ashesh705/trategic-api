@@ -1,0 +1,18 @@
+version: 1
+disable_existing_loggers: false
+formatters:
+  simple:
+    format: '%(asctime)s [%(process)6s] [%(filename)-20s] [%(levelname)-8s] %(message)s'
+handlers:
+  stream:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: simple
+    stream: ext://sys.stderr
+  noop:
+    class: logging.NullHandler
+    level: DEBUG
+loggers:
+  root:
+    level: DEBUG
+    handlers: [stream]
